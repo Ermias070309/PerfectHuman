@@ -278,7 +278,7 @@ Transform:
   m_GameObject: {fileID: 1179667265}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.751, y: 0, z: 0}
+  m_LocalPosition: {x: -0.01, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 1780513764}
   - component: {fileID: 1780513763}
   - component: {fileID: 1780513765}
-  - component: {fileID: 1780513766}
+  - component: {fileID: 1780513767}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -650,19 +650,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2239450996025206428, guid: fbc328c7d8724bc469f5cf8cf66ab8fb, type: 3}
   bulletPos: {fileID: 1179667266}
---- !u!114 &1780513766
-MonoBehaviour:
+--- !u!58 &1780513767
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780513762}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 963c44c6d2989d44f98ab1046e76386f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
