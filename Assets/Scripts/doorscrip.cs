@@ -5,16 +5,21 @@ using System.Collections;
 
 public class doorscrip : MonoBehaviour
 {
+    public AudioSource audioSource;
     public GameObject fadePanel; // Assign your fade panel in the Inspector
     public float fadeDuration = 1f; // Time it takes to fade
     public KeyCode interactKey = KeyCode.E; // Key to press for interaction
     public string nextScene = "NextScene"; // Replace with your scene name
     private bool isPlayerNearby = false;
-
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void Update()
     {
         if (isPlayerNearby && Input.GetKeyDown(interactKey))
         {
+            audioSource.Play();
             StartCoroutine(FadeOut());
         }
     }
