@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpForce = 7f;
-    private bool isGrounded;
+    public bool isGrounded;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
