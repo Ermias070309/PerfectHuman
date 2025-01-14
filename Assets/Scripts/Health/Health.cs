@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    //Komentarerna är kod tll animationerna om vi vill andvända dem sen.
 
     [SerializeField] private float startingHealth;
     public float currentHealth { get; private set; }
@@ -36,7 +37,7 @@ public class Health : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            TakeDamage(1);
+            //TakeDamage(1);
 
         }
     }
