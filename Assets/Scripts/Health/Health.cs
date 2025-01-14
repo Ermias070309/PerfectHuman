@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-   [SerializeField] private float startingHealth;
-    private float currentHealth;
+
+    [SerializeField] private float startingHealth;
+    public float currentHealth { get; private set; }
+    private Animator anim;
 
     private void Awake()
     {
         currentHealth = startingHealth;
-
+        anim = GetComponent<Animator>();
     }
 
     public void TakeDamage(float _damage)
@@ -20,13 +20,15 @@ public class Health : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            // Player alive :)
+            anim.SetTrigger("hurt");
 
         }
         else
         {
-            // Player dead :(
+
+            anim.SetTrigger("die");
         }
-      
+
     }
 }
+
