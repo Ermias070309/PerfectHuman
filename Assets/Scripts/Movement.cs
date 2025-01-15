@@ -25,7 +25,7 @@ public class PlayerMovementWithSounds : MonoBehaviour
         // Check for AudioSource assignment
         if (audioSource == null)
         {
-            Debug.LogError("AudioSource is not assigned!");
+            //Debug.LogError("AudioSource is not assigned!");
         }
     }
 
