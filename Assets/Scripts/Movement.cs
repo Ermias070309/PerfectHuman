@@ -36,10 +36,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Handle jumping
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            animator.SetTrigger("Jump"); // Trigger jump animation
+            animator.Play("jumping"); // Trigger jump animation
         }
     }
 
