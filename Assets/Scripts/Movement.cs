@@ -2,30 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlayerMovementWithSounds : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float jumpForce = 7f;
-
-    [Header("Sound Settings")]
-    public AudioSource audioSource;    // AudioSource component for playing sounds
-    public AudioClip walkingSound;     // Sound effect for walking
-    public AudioClip jumpingSound;     // Sound effect for jumping
+    public bool isGrounded;
 
     private Rigidbody2D rb;
-    private bool isGrounded;
-    private bool isWalking = false;    // Track if walking sound is currently playing
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+
+    [Header("Sound Settings")]
+    public AudioSource audioSource; // AudioSource component for playing sounds
+    public AudioClip walkingSound;  // Sound effect for walking
+    public AudioClip jumpingSound;  // Sound effect for jumping
+
+    private bool isWalking = false; // Track if walking sound is currently playing
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
 
         // Check for AudioSource assignment
         if (audioSource == null)
         {
-            //Debug.LogError("AudioSource is not assigned!");
+            Debug.LogWarning("AudioSource is not assigned!");
         }
     }
 
@@ -33,30 +37,29 @@ public class PlayerMovementWithSounds : MonoBehaviour
     {
         HandleMovement();
         HandleJumping();
+        UpdateAnimatorParameters();
     }
 
     private void HandleMovement()
     {
         // Get horizontal input
         float horizontalInput = Input.GetAxis("Horizontal");
-
-        // Move the player
         rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
 
-        // Play or stop walking sound based on movement
-        if (Mathf.Abs(horizontalInput) > 0.1f) // Ensure walking sound plays even during a jump
+        // Flip sprite based on movement direction
+        if (horizontalInput != 0)
+        {
+            spriteRenderer.flipX = horizontalInput < 0;
+        }
+
+        // Handle walking sound
+        if (Mathf.Abs(horizontalInput) > 0.1f)
         {
             if (!isWalking)
             {
                 PlayWalkingSound();
             }
         }
-
-        // Handle jumping
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            animator.Play("jumping"); // Trigger jump animation
         else
         {
             StopWalkingSound();
@@ -70,7 +73,14 @@ public class PlayerMovementWithSounds : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             PlayJumpingSound();
+            animator.SetTrigger("Jump"); // Trigger jump animation
         }
+    }
+
+    private void UpdateAnimatorParameters()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        animator.SetFloat("Xvelocity", Mathf.Abs(horizontalInput)); // Update movement blend tree
     }
 
     private void PlayWalkingSound()
@@ -109,7 +119,7 @@ public class PlayerMovementWithSounds : MonoBehaviour
         }
     }
 
-    // Simple ground check using collision detection
+    // Ground check using collision detection
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))

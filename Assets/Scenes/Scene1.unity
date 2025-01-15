@@ -16411,6 +16411,7 @@ GameObject:
   - component: {fileID: 453056493}
   - component: {fileID: 453056492}
   - component: {fileID: 453056496}
+  - component: {fileID: 453056497}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -16474,6 +16475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6.5
   jumpForce: 9.5
+  isGrounded: 0
   audioSource: {fileID: 0}
   walkingSound: {fileID: 0}
   jumpingSound: {fileID: 0}
@@ -16587,6 +16589,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
+--- !u!95 &453056497
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453056490}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 09e2f6800bb573e43a0079a31bb1b800, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &486978855
 GameObject:
   m_ObjectHideFlags: 0
