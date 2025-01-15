@@ -1,81 +1,140 @@
 using UnityEngine;
 
+
+
 public class WeaponSelector2D : MonoBehaviour
 {
-    [Header("Vapenreferenser")]
-    public GameObject knife;      // Referens till kniven
-    public GameObject gloves;     // Referens till "gloves" (tidigare "bareHands")
-    public GameObject pistol;     // Referens till pistolen
+    [Header("Weapon References")]
+    public GameObject knife;      // Reference to the knife
+    public GameObject gloves;     // Reference to the gloves
+    public GameObject pistol;     // Reference to the pistol
 
-    private GameObject currentWeapon; // Det aktuella vapnet som spelaren håller
+    private GameObject currentWeapon; // The currently equipped weapon
 
-    private Rigidbody2D player; // Rigidbody2D-komponenten för spelaren
+    private Rigidbody2D player; // Rigidbody2D component for the player
 
-    [Header("Pickup-inställningar")]
-    public float pickupRadius = 1f; // Radie för att plocka upp vapen
-    private GameObject nearbyWeapon; // För att lagra det närmaste vapnet inom pickup-radien
+    [Header("Pickup Settings")]
+    public float pickupRadius = 1f; // Radius for picking up weapons
+    private GameObject nearbyWeapon; // Stores the nearest weapon within the pickup radius
+
+    [Header("Sound Settings")]
+    public AudioSource audioSource;       // AudioSource component for playing sounds
+    public AudioClip pickupSound;         // Sound effect for picking up weapons
+    public AudioClip walkingSound;        // Sound effect for walking
+
+    private bool isWalking = false;       // To track if walking sound is playing
 
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
-        
-        // Kontrollera om alla vapen är tilldelade i Inspector
+
+        // Check if all weapons are assigned in the Inspector
         if (gloves == null || knife == null || pistol == null)
         {
-            Debug.LogError("Ett eller flera vapen är inte tilldelade i Inspector!");
+            Debug.LogError("One or more weapons are not assigned in the Inspector!");
             return;
+        }
+
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource is not assigned!");
         }
     }
 
     void Update()
     {
-        // Kontrollera om spelaren trycker på 'E' och har ett vapen nära
+        HandleWalkingSound();
+
+        // Check if the player presses 'E' and a weapon is nearby
         if (Input.GetKeyDown(KeyCode.E) && nearbyWeapon != null)
         {
-            EquipWeapon(nearbyWeapon); // Utrusta det närmaste vapnet
+            EquipWeapon(nearbyWeapon); // Equip the nearest weapon
         }
     }
 
-    // Kollar om spelaren kommer nära ett vapen och aktiverar pickup-logik
+    // Detect when the player is near a weapon
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("knife") || collider.gameObject.CompareTag("pistol") || collider.gameObject.CompareTag("gloves"))
         {
-            // Om spelaren är nära vapnet, lagra det som närmast
-            nearbyWeapon = collider.gameObject;
-            Debug.Log("Vapen i närheten: " + nearbyWeapon.name);
+            nearbyWeapon = collider.gameObject; // Store the nearby weapon
+            Debug.Log("Weapon nearby: " + nearbyWeapon.name);
         }
     }
 
-    // När spelaren lämnar området för vapnet
+    // Detect when the player leaves the weapon's area
     void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.gameObject == nearbyWeapon)
         {
-            nearbyWeapon = null; // Rensa referensen om spelaren lämnar vapnet
-            Debug.Log("Vapen lämnat: " + collider.gameObject.name);
+            nearbyWeapon = null; // Clear the reference when leaving the weapon
+            Debug.Log("Weapon left: " + collider.gameObject.name);
         }
     }
 
     void EquipWeapon(GameObject newWeapon)
     {
-        // Avaktivera det nuvarande vapnet om det finns ett
+        // Deactivate the current weapon if there is one
         if (currentWeapon != null)
         {
             currentWeapon.SetActive(true);
         }
 
-        // Utrusta det nya vapnet
+        // Equip the new weapon
         currentWeapon = newWeapon;
         currentWeapon.SetActive(false);
 
-        Debug.Log("Utrustat vapen: " + newWeapon.name);
+        // Play the pickup sound
+        PlayPickupSound();
+
+        Debug.Log("Equipped weapon: " + newWeapon.name);
     }
 
-    // Rita en cirkel i scenen för att visualisera pickup-radien
+    void PlayPickupSound()
+    {
+        if (audioSource != null && pickupSound != null)
+        {
+            audioSource.PlayOneShot(pickupSound); // Play the pickup sound once
+        }
+        else
+        {
+            Debug.LogWarning("Pickup sound or AudioSource is not assigned!");
+        }
+    }
+
+    void HandleWalkingSound()
+    {
+        // Check horizontal movement input
+        float horizontalInput = Input.GetAxis("Horizontal");
+
+        if (Mathf.Abs(horizontalInput) > 0.1f)
+        {
+            if (!isWalking && walkingSound != null && audioSource != null)
+            {
+                // Start playing walking sound
+                audioSource.clip = walkingSound;
+                audioSource.loop = true; // Loop walking sound
+                audioSource.Play();
+                isWalking = true;
+            }
+        }
+        else
+        {
+            // Stop walking sound when not moving
+            if (isWalking && audioSource.isPlaying)
+            {
+                audioSource.Stop();
+                isWalking = false;
+            }
+        }
+    }
+
+    // Draw a circle in the scene to visualize the pickup radius
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, pickupRadius);
     }
 }
+
+
