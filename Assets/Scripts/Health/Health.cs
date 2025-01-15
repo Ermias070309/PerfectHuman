@@ -2,16 +2,14 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    //Komentarerna är kod tll animationerna om vi vill andvända dem sen.
-
     [SerializeField] private float startingHealth;
     public float currentHealth { get; private set; }
-   // private Animator anim;
+ 
 
     private void Awake()
     {
         currentHealth = startingHealth;
-       // anim = GetComponent<Animator>();
+      
     }
 
     public void TakeDamage(float _damage)
@@ -19,27 +17,18 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
 
-        if (currentHealth > 0)
+        //varför funkar bara när den är på else? och när health är mindre än 0
+        if(currentHealth <= 0)
         {
-            //anim.SetTrigger("hurt");
-            //Player gets hurt
+            GetComponent<PlayerMovementWithSounds>().enabled = false;
         }
-        else
-        {
-           // anim.SetTrigger("die");
-           //player dies
-        }
-
+     
     }
 
 
-    private void Update()
+    public void AddHealth(float _value)
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            //TakeDamage(1);
-
-        }
+        currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
     }
 }
 
