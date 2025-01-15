@@ -51,6 +51,12 @@ public class PlayerMovementWithSounds : MonoBehaviour
                 PlayWalkingSound();
             }
         }
+
+        // Handle jumping
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            animator.Play("jumping"); // Trigger jump animation
         else
         {
             StopWalkingSound();
