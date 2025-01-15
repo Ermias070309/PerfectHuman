@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
         //varför funkar bara när den är på else? och när health är mindre än 0
         if(currentHealth <= 0)
         {
-            GetComponent<PlayerMovement>().enabled = false;
+            GetComponent<PlayerMovementWithSounds>().enabled = false;
         }
      
     }
