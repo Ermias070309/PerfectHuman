@@ -768,7 +768,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -16474,7 +16474,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6.5
   jumpForce: 9.5
-  isGrounded: 0
+  audioSource: {fileID: 0}
+  walkingSound: {fileID: 0}
+  jumpingSound: {fileID: 0}
 --- !u!61 &453056494
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16704,7 +16706,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -17450,7 +17452,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -18223,7 +18225,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -18723,21 +18725,21 @@ SceneRoots:
   - {fileID: 2067573916}
   - {fileID: 1439152491}
   - {fileID: 1897150597}
-  - {fileID: 1257489420}
-  - {fileID: 378892325}
   - {fileID: 1208502780}
   - {fileID: 364116476}
+  - {fileID: 486978861}
+  - {fileID: 748345162}
+  - {fileID: 378892325}
+  - {fileID: 1257489420}
   - {fileID: 268203038}
   - {fileID: 971066859}
-  - {fileID: 486978861}
   - {fileID: 1667182926}
   - {fileID: 419816927}
-  - {fileID: 675385430}
   - {fileID: 685432751}
-  - {fileID: 748345162}
-  - {fileID: 1192361472}
+  - {fileID: 675385430}
   - {fileID: 422979540}
   - {fileID: 718170272}
   - {fileID: 151820687}
-  - {fileID: 1581717050}
+  - {fileID: 1192361472}
   - {fileID: 627295693}
+  - {fileID: 1581717050}
