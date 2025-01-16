@@ -1118,8 +1118,8 @@ GameObject:
   - component: {fileID: 1648356192}
   - component: {fileID: 1648356191}
   m_Layer: 0
-  m_Name: knife
-  m_TagString: knife
+  m_Name: sword
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1447,6 +1447,9 @@ MonoBehaviour:
   audioSource: {fileID: 2059187151}
   walkingSound: {fileID: 8300000, guid: a0f49ef6323c0744698c4a7746bd6a2c, type: 3}
   jumpingSound: {fileID: 8300000, guid: 20119ae2fa2591543b0fc33b316b0071, type: 3}
+  swordSwingSound: {fileID: 0}
+  hasSword: 0
+  swordPickupSound: {fileID: 0}
 --- !u!114 &2059187145
 MonoBehaviour:
   m_ObjectHideFlags: 0

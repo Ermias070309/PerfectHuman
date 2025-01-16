@@ -9,6 +9,7 @@ TagManager:
   - pistol
   - bareHands
   - gloves
+  - Sword
   layers:
   - Default
   - TransparentFX
