@@ -9,7 +9,7 @@ public class doorscrip : MonoBehaviour
     public GameObject fadePanel; // Assign your fade panel in the Inspector
     public float fadeDuration = 1f; // Time it takes to fade
     public KeyCode interactKey = KeyCode.E; // Key to press for interaction
-    public string nextScene = "NextScene"; // Replace with your scene name
+    public string Scene2 = "Scene2"; // Replace with your scene name
     private bool isPlayerNearby = false;
     private void Start()
     {
@@ -55,9 +55,9 @@ public class doorscrip : MonoBehaviour
         // Wait briefly, then load the next scene
         yield return new WaitForSeconds(0.5f);
 
-        if (!string.IsNullOrEmpty(nextScene))
+        if (!string.IsNullOrEmpty(Scene2))
         {
-            SceneManager.LoadScene(nextScene);
+            SceneManager.LoadScene(Scene2);
         }
     }
 }
