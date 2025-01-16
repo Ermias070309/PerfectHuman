@@ -664,7 +664,6 @@ GameObject:
   - component: {fileID: 364116472}
   - component: {fileID: 364116471}
   - component: {fileID: 364116477}
-  - component: {fileID: 364116478}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Untagged
@@ -737,7 +736,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.23}
@@ -779,7 +778,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 2
 --- !u!212 &364116475
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -862,19 +861,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2239450996025206428, guid: fbc328c7d8724bc469f5cf8cf66ab8fb, type: 3}
   bulletPos: {fileID: 596037497}
---- !u!114 &364116478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364116470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e973ec83fc99f5b42a6847aa615c1f5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!1 &368606187
 GameObject:
   m_ObjectHideFlags: 0
@@ -16722,7 +16708,6 @@ GameObject:
   - component: {fileID: 486978857}
   - component: {fileID: 486978856}
   - component: {fileID: 486978862}
-  - component: {fileID: 486978863}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Untagged
@@ -16795,7 +16780,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.23}
@@ -16837,7 +16822,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!212 &486978860
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16920,19 +16905,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2239450996025206428, guid: fbc328c7d8724bc469f5cf8cf66ab8fb, type: 3}
   bulletPos: {fileID: 513610126}
---- !u!114 &486978863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486978855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e973ec83fc99f5b42a6847aa615c1f5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!1 &513610125
 GameObject:
   m_ObjectHideFlags: 0
@@ -16942,7 +16914,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 513610126}
-  - component: {fileID: 513610127}
   m_Layer: 0
   m_Name: BulletPos (2)
   m_TagString: Untagged
@@ -16965,19 +16936,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 486978861}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &513610127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513610125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e973ec83fc99f5b42a6847aa615c1f5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!1 &547343976
 GameObject:
   m_ObjectHideFlags: 0
@@ -17626,7 +17584,6 @@ GameObject:
   - component: {fileID: 748345158}
   - component: {fileID: 748345157}
   - component: {fileID: 748345163}
-  - component: {fileID: 748345164}
   m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Untagged
@@ -17699,7 +17656,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.23}
@@ -17741,7 +17698,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!212 &748345161
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17824,19 +17781,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2239450996025206428, guid: fbc328c7d8724bc469f5cf8cf66ab8fb, type: 3}
   bulletPos: {fileID: 928886933}
---- !u!114 &748345164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748345156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e973ec83fc99f5b42a6847aa615c1f5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!1 &819474139
 GameObject:
   m_ObjectHideFlags: 0
@@ -18182,7 +18126,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 928886933}
-  - component: {fileID: 928886934}
   m_Layer: 0
   m_Name: BulletPos (3)
   m_TagString: Untagged
@@ -18205,19 +18148,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 748345162}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &928886934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928886932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e973ec83fc99f5b42a6847aa615c1f5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!1 &971066858
 GameObject:
   m_ObjectHideFlags: 0
@@ -18558,7 +18488,6 @@ GameObject:
   - component: {fileID: 1208502776}
   - component: {fileID: 1208502775}
   - component: {fileID: 1208502781}
-  - component: {fileID: 1208502782}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -18631,7 +18560,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.23}
@@ -18673,7 +18602,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!212 &1208502779
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18756,19 +18685,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2239450996025206428, guid: fbc328c7d8724bc469f5cf8cf66ab8fb, type: 3}
   bulletPos: {fileID: 2112832699}
---- !u!114 &1208502782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1208502774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e973ec83fc99f5b42a6847aa615c1f5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!1 &1257489419
 GameObject:
   m_ObjectHideFlags: 0
@@ -19433,7 +19349,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2112832699}
-  - component: {fileID: 2112832700}
   - component: {fileID: 2112832701}
   m_Layer: 0
   m_Name: BulletPos
@@ -19457,19 +19372,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1208502780}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2112832700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112832698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e973ec83fc99f5b42a6847aa615c1f5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!61 &2112832701
 BoxCollider2D:
   m_ObjectHideFlags: 0
