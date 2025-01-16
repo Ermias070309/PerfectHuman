@@ -1423,7 +1423,7 @@ Transform:
   m_GameObject: {fileID: 2059187137}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.8676, y: 1.32, z: 0}
+  m_LocalPosition: {x: -7.95, y: -1.93, z: 0}
   m_LocalScale: {x: 4.5087047, y: 5.029984, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1443,6 +1443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 7
+  isGrounded: 0
   audioSource: {fileID: 2059187151}
   walkingSound: {fileID: 8300000, guid: a0f49ef6323c0744698c4a7746bd6a2c, type: 3}
   jumpingSound: {fileID: 8300000, guid: 20119ae2fa2591543b0fc33b316b0071, type: 3}
@@ -1527,7 +1528,7 @@ BoxCollider2D:
   m_Offset: {x: 0.006156087, y: 0.24158093}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 0.72, y: 0.72}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
