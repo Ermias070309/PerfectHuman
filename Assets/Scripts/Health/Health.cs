@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float startingHealth;
@@ -17,10 +17,11 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
 
-        //varför funkar bara när den är på else? och när health är mindre än 0
+       
         if(currentHealth <= 0)
         {
             GetComponent<PlayerMovementWithSounds>().enabled = false;
+            SceneManager.LoadScene("Scene1");
         }
      
     }
