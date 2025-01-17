@@ -645,7 +645,7 @@ GameObject:
   - component: {fileID: 2012170596}
   - component: {fileID: 2012170595}
   - component: {fileID: 2012170594}
-  - component: {fileID: 2012170593}
+  - component: {fileID: 2012170597}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -673,18 +673,6 @@ RectTransform:
   m_AnchoredPosition: {x: 8, y: -21.026}
   m_SizeDelta: {x: 220.262, y: 42.0525}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2012170593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2012170591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06fb39dd30e843e49ba33c506fa46a94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2012170594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,7 +716,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2012170595}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2012170597}
+        m_TargetAssemblyTypeName: Gameoverscript, Assembly-CSharp
+        m_MethodName: RestartButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2012170595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,6 +767,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012170591}
   m_CullTransparentMesh: 1
+--- !u!114 &2012170597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012170591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fb39dd30e843e49ba33c506fa46a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2015702369
 GameObject:
   m_ObjectHideFlags: 0
