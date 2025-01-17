@@ -8,27 +8,27 @@ public class PlayerMovementWithSounds : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 7f;
     public bool isGrounded;
-    bool swordnearby = false;
+    bool swordNearby = false;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
     [Header("Sound Settings")]
-    public AudioSource audioSource; // AudioSource component for playing sounds
-    public AudioClip walkingSound;  // Sound effect for walking
-    public AudioClip jumpingSound;  // Sound effect for jumping
-    public AudioClip swordSwingSound; // Sound effect for sword swinging
-    GameObject swordonground;
-    private bool isWalking = false; // Track if walking sound is currently playing
+    public AudioSource audioSource;
+    public AudioClip walkingSound;
+    public AudioClip jumpingSound;
+    public AudioClip swordSwingSound;
+    GameObject swordOnGround;
+    private bool isWalking = false;
 
     [Header("Sword Settings")]
-    public GameObject swordInHand; // Sword GameObject in the player's hand
-    public bool hasSword = false;  // Whether the player has picked up the sword
-    public AudioClip swordPickupSound; // Sound effect for picking up the sword
+    public GameObject swordInHand;
+    public bool hasSword = false;
+    public AudioClip swordPickupSound;
 
-    private bool isSwordAttack = false; // Track sword attack state
-    private BoxCollider2D swordCollider; // The sword's collider
+    private bool isSwordAttack = false;
+    private BoxCollider2D swordCollider;
 
     void Start()
     {
@@ -36,20 +36,18 @@ public class PlayerMovementWithSounds : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
-        // Check for AudioSource assignment
         if (audioSource == null)
         {
             Debug.LogWarning("AudioSource is not assigned!");
         }
 
-        // Ensure the sword starts inactive
         if (swordInHand != null)
         {
             swordInHand.SetActive(false);
             swordCollider = swordInHand.GetComponent<BoxCollider2D>();
             if (swordCollider != null)
             {
-                swordCollider.enabled = false; // Disable sword collider initially
+                swordCollider.enabled = false;
             }
         }
     }
@@ -61,27 +59,24 @@ public class PlayerMovementWithSounds : MonoBehaviour
         HandleSwordActions();
         UpdateAnimatorParameters();
 
-        // Pick up the sword when pressing 'E' near the sword
-        if (Input.GetKeyDown(KeyCode.E) && swordnearby)
+        if (Input.GetKeyDown(KeyCode.E) && swordNearby)
         {
             PickUpSword();
-            Destroy(swordonground); // Destroy the sword object on the ground
+            Destroy(swordOnGround);
         }
     }
 
     private void HandleMovement()
     {
-        // Get horizontal input
         float horizontalInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
 
-        // Flip sprite based on movement direction
         if (horizontalInput != 0)
         {
             spriteRenderer.flipX = horizontalInput < 0;
         }
 
-        // Handle walking sound
+        // Play walking sounds
         if (Mathf.Abs(horizontalInput) > 0.1f)
         {
             if (!isWalking)
@@ -97,12 +92,11 @@ public class PlayerMovementWithSounds : MonoBehaviour
 
     private void HandleJumping()
     {
-        // Check for jump input
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             PlayJumpingSound();
-            animator.SetTrigger("Jump"); // Trigger jump animation
+            animator.SetTrigger("Jump");
         }
     }
 
@@ -110,16 +104,13 @@ public class PlayerMovementWithSounds : MonoBehaviour
     {
         if (hasSword)
         {
-            animator.SetBool("HoldingSword", true); // Update Animator that player has sword
+            animator.SetBool("HoldingSword", true);
 
-            // Sword attack on pressing 'E' (Only if sword is in hand)
             if (Input.GetKeyDown(KeyCode.E) && !isSwordAttack)
             {
                 SwordAttack();
-               
             }
         }
-        
     }
 
     private void SwordAttack()
@@ -127,22 +118,19 @@ public class PlayerMovementWithSounds : MonoBehaviour
         if (!isSwordAttack)
         {
             isSwordAttack = true;
-            animator.SetTrigger("fightingswordplayer"); // Correct animator trigger name
+            animator.SetTrigger("fightingswordplayer");
 
-            // Play sword swing sound
             if (audioSource != null && swordSwingSound != null)
             {
                 audioSource.PlayOneShot(swordSwingSound);
             }
 
-            // Enable sword collider during attack
             if (swordCollider != null)
             {
                 swordCollider.enabled = true;
             }
 
-            // Reset sword attack state after animation (use an animation event or delay)
-            Invoke(nameof(ResetSwordAttack), 0.5f); // Adjust delay as per your sword attack animation length
+            Invoke(nameof(ResetSwordAttack), 0.5f);
         }
     }
 
@@ -150,7 +138,6 @@ public class PlayerMovementWithSounds : MonoBehaviour
     {
         isSwordAttack = false;
 
-        // Disable sword collider after attack animation ends
         if (swordCollider != null)
         {
             swordCollider.enabled = false;
@@ -160,7 +147,17 @@ public class PlayerMovementWithSounds : MonoBehaviour
     private void UpdateAnimatorParameters()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        animator.SetFloat("Xvelocity", Mathf.Abs(horizontalInput)); // Update movement blend tree
+
+        if (hasSword && Mathf.Abs(horizontalInput) > 0.1f)
+        {
+            animator.SetBool("RunningWithSword", true); // Trigger running with sword animation
+        }
+        else
+        {
+            animator.SetBool("RunningWithSword", false); // Reset running with sword animation
+        }
+
+        animator.SetFloat("Xvelocity", Mathf.Abs(horizontalInput)); // Update running or idle animations
     }
 
     private void PlayWalkingSound()
@@ -205,14 +202,12 @@ public class PlayerMovementWithSounds : MonoBehaviour
         {
             hasSword = true;
 
-            // Enable the sword in hand
             if (swordInHand != null)
             {
                 swordInHand.SetActive(true);
                 swordCollider = swordInHand.GetComponent<BoxCollider2D>();
             }
 
-            // Play pickup sound
             if (audioSource != null && swordPickupSound != null)
             {
                 audioSource.PlayOneShot(swordPickupSound);
@@ -220,7 +215,6 @@ public class PlayerMovementWithSounds : MonoBehaviour
         }
     }
 
-    // Ground check using collision detection
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
@@ -237,21 +231,20 @@ public class PlayerMovementWithSounds : MonoBehaviour
         }
     }
 
-    // Trigger for sword pickup
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Sword"))
         {
-            swordnearby = true;
-            swordonground = other.gameObject;
+            swordNearby = true;
+            swordOnGround = other.gameObject;
         }
     }
-   
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Sword"))
         {
-            swordnearby = false;
+            swordNearby = false;
         }
     }
 }
