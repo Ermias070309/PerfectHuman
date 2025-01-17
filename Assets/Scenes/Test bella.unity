@@ -135,7 +135,8 @@ GameObject:
   - component: {fileID: 266164796}
   - component: {fileID: 266164798}
   - component: {fileID: 266164799}
-  m_Layer: 0
+  - component: {fileID: 266164800}
+  m_Layer: 3
   m_Name: Robot
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -253,7 +254,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 1
+  m_EdgeRadius: 0
 --- !u!114 &266164799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +268,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  damage: 1
+--- !u!50 &266164800
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266164795}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &410515807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,7 +1384,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.27085552, g: 0.27936092, b: 0.7830189, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1851,9 +1880,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 730f78d984fd8d3489af0f0a2e47766f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAmount: 1
   attackKey: 101
-  attackCooldown: 0.5
-  swordDamage: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
