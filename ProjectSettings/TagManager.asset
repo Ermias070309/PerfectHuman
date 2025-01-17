@@ -11,6 +11,7 @@ TagManager:
   - gloves
   - Sword
   - NextSceneTrigger
+  - Enemy
   layers:
   - Default
   - TransparentFX

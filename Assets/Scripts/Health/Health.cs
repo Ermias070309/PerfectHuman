@@ -22,6 +22,7 @@ public class Health : MonoBehaviour
         {
             GetComponent<PlayerMovementWithSounds>().enabled = false;
             SceneManager.LoadScene("Scene1");
+            Destroy(gameObject);
         }
      
     }
