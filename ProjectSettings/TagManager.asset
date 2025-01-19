@@ -11,11 +11,12 @@ TagManager:
   - gloves
   - Sword
   - NextSceneTrigger
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - 
