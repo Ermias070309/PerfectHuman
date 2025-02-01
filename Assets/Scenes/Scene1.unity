@@ -19177,6 +19177,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 161057313345205612, guid: 111049db1ac86d442b5e57be49c18654, type: 3}
+      propertyPath: swordSwingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c7ee05a1f5ad11459ef6e1868748021, type: 3}
+    - target: {fileID: 161057313345205612, guid: 111049db1ac86d442b5e57be49c18654, type: 3}
+      propertyPath: swordPickupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d3a2f143fdcde3e418a2ab7f478e96ad, type: 3}
     - target: {fileID: 4651112994078348636, guid: 111049db1ac86d442b5e57be49c18654, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.1
